@@ -7,7 +7,7 @@ object RetrofitClientInstance {
     private var retrofit: Retrofit? = null;
     private val BASE_URL = "https://pkgstore.datahub.io";
 
-    val retorfitInstance : Retrofit?
+    val retrofitInstance : Retrofit?
     get() {
         // if object has not been created
         if (retrofit == null) {

@@ -6,8 +6,12 @@ import app.plantdiary.individualassignment3048q.dto.Country
 import app.plantdiary.individualassignment3048q.service.CountryService
 
 class MainViewModel : ViewModel() {
-    lateinit var countries: MutableLiveData<ArrayList<Country>>;
+    var countries: MutableLiveData<ArrayList<Country>> = MutableLiveData<ArrayList<Country>>();
     var countryService: CountryService = CountryService();
+
+    init {
+        fetchCountries();
+    }
 
     // TODO: Implement the ViewModel
     fun fetchCountries() {

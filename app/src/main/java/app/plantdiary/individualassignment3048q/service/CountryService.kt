@@ -12,9 +12,17 @@ class CountryService {
 
     fun fetchCountries() : MutableLiveData<ArrayList<Country>> {
         var _countries = MutableLiveData<ArrayList<Country>>();
-        val service = RetrofitClientInstance.retorfitInstance?.create(ICountryDAO::class.java);
+        val service = RetrofitClientInstance.retrofitInstance?.create(ICountryDAO::class.java);
         val call = service?.getAllCountries();
         call?.enqueue(object: Callback<ArrayList<Country>> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onFailure(call: Call<ArrayList<Country>>, t: Throwable) {
+                val i = 1+1;
+            }
+
             /**
              * Invoked for a received HTTP response.
              *
@@ -29,15 +37,7 @@ class CountryService {
                 _countries.value = response.body();
             }
 
-            /**
-             * Invoked when a network exception occurred talking to the server or when an unexpected
-             * exception occurred creating the request or processing the response.
-             */
-            override fun onFailure(call: Call<ArrayList<Country>>, t: Throwable) {
-                val i = 1+1;
-            }
-
-        });
+        })
 
         return _countries;
     }

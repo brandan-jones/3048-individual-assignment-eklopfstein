@@ -1,8 +1,23 @@
 package app.plantdiary.individualassignment3048q.dto
 
-class Country (var code: String, var name: String, var countryId: Int = 0){
+data class Country(private var Code: String, private var Name: String) {
 
-    override fun toString() : String {
-        return "$name $code";
+    var code: String
+        get() {
+            return Code;
+        }
+        set(code: String) {
+            Code = code;
+        }
+    var name: String
+        get() {
+            return Name;
+        }
+        set(name: String) {
+            Name = name;
+        }
+
+    override fun toString(): String {
+        return "$Name $Code";
     }
 }
