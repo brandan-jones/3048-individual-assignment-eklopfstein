@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.countries.observe(this, Observer{
+        viewModel.countries.observe(viewLifecycleOwner, Observer{
             countries -> actCountry.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, countries))
         })
         viewModel.fetchCountries()
