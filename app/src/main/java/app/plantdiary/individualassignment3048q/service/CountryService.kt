@@ -11,6 +11,7 @@ import retrofit2.Response
 class CountryService {
 
     fun fetchCountries() : MutableLiveData<ArrayList<Country>> {
+        // ArrayList of the countries from the JSON file
         var _countries = MutableLiveData<ArrayList<Country>>();
         val service = RetrofitClientInstance.retrofitInstance?.create(ICountryDAO::class.java);
         val call = service?.getAllCountries();
@@ -20,6 +21,7 @@ class CountryService {
              * exception occurred creating the request or processing the response.
              */
             override fun onFailure(call: Call<ArrayList<Country>>, t: Throwable) {
+                // placeholder for failures
                 val i = 1+1;
             }
 
@@ -34,6 +36,7 @@ class CountryService {
                 call: Call<ArrayList<Country>>,
                 response: Response<ArrayList<Country>>
             ) {
+                // Stores the countries from the JSON file
                 _countries.value = response.body();
             }
 

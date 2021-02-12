@@ -4,6 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClientInstance {
+    // establishes retrofit client instanced for the JSON file
     private var retrofit: Retrofit? = null;
     private val BASE_URL = "https://pkgstore.datahub.io";
 

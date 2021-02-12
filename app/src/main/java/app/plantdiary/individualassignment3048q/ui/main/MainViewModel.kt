@@ -9,11 +9,16 @@ class MainViewModel : ViewModel() {
     var countries: MutableLiveData<ArrayList<Country>> = MutableLiveData<ArrayList<Country>>();
     var countryService: CountryService = CountryService();
 
+    /***
+     * On init, load the countries and their codes into the program
+     */
     init {
         fetchCountries();
     }
 
-    // TODO: Implement the ViewModel
+    /***
+     * Loads the countries and their codes
+     */
     fun fetchCountries() {
         countries = countryService.fetchCountries();
     }
